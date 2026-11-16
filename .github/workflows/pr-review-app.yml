@@ -17,14 +17,14 @@ on:
       - 'data/**'
       - 'lib/**'
       - 'helpers/**'
+      - '.github/workflows/**'
       - 'config.rb'
       - 'Gemfile'
       - 'Gemfile.lock'
       - 'package.json'
       - 'package-lock.json'
       - 'Rakefile'
-      - 'Gemfile.lock'
-      - 'package-lock.json'
+      - 'README.md'
 
 concurrency:
   group: pr-preview-${{ github.ref }}
@@ -41,6 +41,8 @@ jobs:
     steps:
       - name: Checkout pull request
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up Ruby
         if: github.event.action != 'closed'
