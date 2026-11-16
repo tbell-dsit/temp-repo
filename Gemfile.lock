@@ -22,7 +22,7 @@ GEM
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
     backports (3.24.1)
-    base64 (0.2.0)
+    base64 (0.3.0)
     bigdecimal (3.1.9)
     builder (3.3.0)
     chunky_png (1.4.0)
