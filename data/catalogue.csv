@@ -402,36 +402,6 @@ You can:
 - search for coronavirus (COVID-19) walk-in sites
 
 This API was previously known as the Service Search API. ",https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services,,https://digital.nhs.uk/developer/help-and-support,,,,nhs-digital
-2024-04-23,2024-04-23,https://digital.nhs.uk/developer/api-catalogue/directory-of-services-urgent-and-emergency-care-rest,Directory of Services - Urgent and Emergency Care - REST API,"Use this API to access Directory of Services (DoS) information on a wide range of health and care services across England. 
-
-You can search for services based on a combination of parameters: 
-
-- the patient’s age, sex, and current location
-- the patient’s clinical need
-
-You can also search for services using similar parameters, such as by:
-
-- service type - find matching service type ID, location and optional patient details
-- clinical term - find matching symptoms, location and optional patient details
-- ODS code - find active services with a matching ODS code
-- service ID - find active services with a matching service identifier
-
-This service is widely used in an Urgent and Emergency Care context.
-
-It is not currently suitable for referrals from services using NHS Pathways outcomes, such as NHS 111 - for this, use the Directory of Services - Urgent and Emergency Care - SOAP API.
-
-You need a valid DoS account to use this API. ",https://digital.nhs.uk/developer/api-catalogue/directory-of-services-urgent-and-emergency-care-rest,,https://digital.nhs.uk/developer/help-and-support,,,,nhs-digital
-2026-11-15,2026-11-15,https://digital.nhs.uk/developer/api-catalogue/directory-of-services-urgent-and-emergency-care-soap,Directory of Services - Urgent and Emergency Care - SOAP API," Use this API to access Directory of Services (DoS) information on a wide range of health and care services across England. 
-
-You can search for services based on a combination of parameters: 
-
-- find an appropriate list of services for a specific clinical need
-- get technical endpoint information for a given service, using a service ID or ODS code
-- obtain capacity information for specified hospitals or wards, using a service ID or ODS code
-
-This service is widely used in an Urgent and Emergency Care context using NHS Pathways outcomes. For example, NHS 111 use it to find a service in real-time with the capacity to help a patient with given symptoms, within range of a given location.
-
-You need a valid DoS account to use this API. ",https://digital.nhs.uk/developer/api-catalogue/directory-of-services-urgent-and-emergency-care-soap#overview--who-can-use-this-api,,https://digital.nhs.uk/developer/help-and-support,,,,nhs-digital
 2024-04-23,2024-04-23,https://digital.nhs.uk/developer/api-catalogue/electronic-prescription-service-directory-of-services,Electronic Prescription Service Directory of Services API,"Use this API to access information about dispensing services, including searching for dispensers who can provide services for a patient with a given location and urgency.
 
 You can:
