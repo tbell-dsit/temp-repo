@@ -32,6 +32,7 @@ concurrency:
 
 permissions:
   contents: write
+  pages: read
   pull-requests: write
 
 jobs:
@@ -67,6 +68,6 @@ jobs:
           source-dir: ./build/
           preview-branch: gh-pages
           umbrella-dir: pr-preview
-          pages-base-url: www.api.gov.uk
+          pages-base-url: tbell-dsit.github.io/temp-repo
           action: auto
           wait-for-pages-deployment: true
