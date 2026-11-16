@@ -1,0 +1,17 @@
+# Host to use for canonical URL generation (without trailing slash)
+host: https://www.api.gov.uk
+
+# Header-related options
+show_govuk_logo: false
+service_name: API Catalogue
+service_link: https://www.api.gov.uk
+
+# Links to show in the footer
+footer_links:
+  Accessibility: /accessibility.html
+
+# Prevent robots from indexing (e.g. whilst in development)
+prevent_indexing: false
+
+show_contribution_banner: true
+github_repo: co-cddo/api-catalogue

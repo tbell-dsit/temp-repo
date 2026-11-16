@@ -1,0 +1,28 @@
+---
+title: Borders
+weight: 100
+dateAdded: '2021-06-07'
+dateUpdated: '2021-06-07'
+---
+
+# Borders
+
+The API Catalogue currently contains the following APIs in this category:
+
+| Department | Name | Description |
+| --- | --- | --- |
+| HMRC | [Bulk Data File List](/hmrc/bulk-data-file-list/) | The API lists the bulk data files available to download for a specific information type. For each file in list there will be a URL to download the file. |
+| HMRC | [Check an EORI Number](/hmrc/check-an-eori-number/) | This API enables your application to: - check if an EORI number beginning with GB (issued by the UK) is valid. - view the name and address of the business that the EORI number is registered to (if the business agreed to share this information). |
+| HMRC | [Common Transit Convention Traders](/hmrc/common-transit-convention-traders/) | This API will allow you to send departure and arrival movement notifications to the New Computerised Transit System (NCTS). It will also let you retrieve messages sent from the offices of departure and destination. |
+| HMRC | [Customs Inventory Linking Exports](/hmrc/customs-inventory-linking-exports/) | This API enables the functionality to support the Inventory Linking Export process. Inventory Linking controls and monitors cargo moving through temporary storage facilities, and allows the movement/transition through frontiers. |
+| HMRC | [GOV.UK Trade Tariff API](/hmrc/gov-uk-trade-tariff-api/) | The GOV.UK Trade Tariff API makes it easy to access UK Trade Tariff data from https://www.gov.uk/trade-tariff. The data includes commodity codes, import/export controls, customs duty and VAT rates. It is accessed via HTTPS and returns data in a JSON format. The reference documentation provides a thorough overview of the endpoints and the response format. |
+| HMRC | [Goods Vehicle Movements](/hmrc/goods-vehicle-movements/) | This API provides resources related to the Goods Vehicle Movement Service.|
+| HMRC | [Individual Benefits](/hmrc/individual-benefits/) | This API in particular provides information about an employee’s or director’s benefits for a given tax year, as reported to HMRC by their employer(s) through the PAYE process. For example company cars and fuel, interest-free and low interest loans, private medical and dental insurance. |
+| HMRC | [Push Pull Notifications](/hmrc/push-pull-notifications/) |Use the Push Pull Notifications API to get notifications (pull) and to send notifications (push) automatically. Other HMRC APIs create notifications in response to events like asynchronous API requests. |
+| HMRC | [Safety and Security Import Declarations](/hmrc/safety-and-security-import-declarations/) | The Safety and Security system handles digital communications between: customs administrators carriers or their appointed representatives You must provide the UK customs authorities with advance information by submitting an ENS before you bring goods into the UK. |
+| HMRC | [Safety and Security Import Notifications](/hmrc/safety-and-security-import-notifications/) | The APIs will receive new ENS submissions or amendments and will return a response for the end-user. The response will include a movement reference number or an error message. |
+| HMRC | [Safety and Security Import Outcomes](/hmrc/safety-and-security-import-outcomes/) | The APIs will receive new ENS submissions or amendments and will return a response for the end-user. The response will include a movement reference number or an error message. |
+| DBT | [Check barriers to trading and investing abroad](/dbt/check-barriers-to-trading-and-investing-abroad/) | Check barriers to trading and investing abroad is the service to which DBT publishes trade barriers. It is aimed at UK-based businesses planning to export goods, provide services or invest money in another country. |
+| DBT | [UK Global Tariff (measures as defined)](/dbt/uk-global-tariff-measures-as-defined/) | The UK Global Tariff (UKGT) is the UK's first independent tariff policy which replaced the EU Common External Tariff (CET) which applied until 31 December 2020. This tariff entered into force on 1 January 2021. The UKGT applies to all goods imported into the UK. It lists preferential measures where the UK has entered into a new trade agreement or arrangement with a third country or territory. For other countries and territories, it shows the UK's Most Favoured Nation (MFN) tariffs. The dataset does not include other import duties (such as VAT) and details of quota volumes. |
+| DBT | [UK Global Tariff (measures on declarable commodities)](/dbt/uk-global-tariff-measures-on-declarable-commodities/) | The UK Global Tariff (UKGT) is the UK's first independent tariff policy which replaced the EU Common External Tariff (CET) which applied until 31 December 2020. This tariff entered into force on 1 January 2021. The UKGT applies to all goods imported into the UK. It lists preferential measures where the UK has entered into a new trade agreement or arrangement with a third country or territory. For other countries and territories, it shows the UK's Most Favoured Nation (MFN) tariffs. The dataset does not include other import duties (such as VAT) and details of quota volumes. |
+| UKHO | [AVCS Online Discovery API](/ukho/avcs-online-discovery-api/) | The ADMIRALTY Vector Chart Service (AVCS) Online Discovery API provides free access to a trial version of the AVCS Online Web Map Service (WMS). It is intended for use by developers from organisations who are interested in becoming re-sellers of AVCS Online. |

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Builds the Docker image, and serves the site on localhost:4567
+
+# Usage:
+# bin/docker_serve
+# PORT=8080 bin/docker_serve
+
+set -euo pipefail
+
+host_port=${PORT:-4567}
+
+docker build -t co-cddo/api-catalogue:latest .
+docker run --publish "$host_port:4567" co-cddo/api-catalogue:latest

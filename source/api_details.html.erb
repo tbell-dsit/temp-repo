@@ -1,0 +1,57 @@
+<h1 id="<%= api.name.parameterize %>"><%= api.name %></h1>
+
+<% if api.description.present? %>
+  <h2>Overview</h2>
+  <%= render_markdown(unescape_newlines(api.description)) %>
+<% end %>
+
+<% if api.license.present? %>
+  <h2>Usage licence</h2>
+  <p>
+    <%= escape_html(api.license) %>
+  </p>
+<% end %>
+
+<% if api.documentation.present? %>
+  <h2>Documentation</h2>
+  <p>
+    <%= link_to(api.name + " documentation", api.documentation) %>
+  </p>
+<% end %>
+
+<% if api.url.present? %>
+  <h2>Endpoint</h2>
+  <p>
+    <code>
+      <%= api.url %>
+    </code>
+  </p>
+<% end %>
+
+<% if api.maintainer.present? %>
+  <h2>Contact</h2>
+  <p>
+    <%= escape_html(api.maintainer) %>
+  </p>
+<% end %>
+
+<% if api.area_served.present? %>
+  <h2>Geographic area</h2>
+  <p>
+    <%= escape_html(api.area_served) %>
+  </p>
+<% end %>
+
+<% if api.start_date.present? %>
+  <h2>Start date</h2>
+  <p>
+    <%= api.start_date.to_formatted_s(:rfc822) %>
+  </p>
+<% end %>
+
+<% if api.end_date.present? %>
+  <h2>Expiry date</h2>
+  <p>
+    <%= api.end_date.to_formatted_s(:rfc822) %>
+  </p>
+<% end %>
