@@ -43,7 +43,7 @@ jobs:
 
       - name: Set up Ruby
         if: github.event.action != 'closed'
-        uses: ruby/setup-ruby@ca041f971d66735f3e5ff1e21cc13e2d51e7e535
+        uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199
         with:
           bundler-cache: true
 
