@@ -1,0 +1,82 @@
+name: Static site checks and deploy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Check JavaScript syntax
+        run: node --check js.js
+
+      - name: Check page assets
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          class AssetParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.assets = []
+
+              def handle_starttag(self, tag, attrs):
+                  attr = "src" if tag == "script" else "href" if tag == "link" else None
+                  value = dict(attrs).get(attr) if attr else None
+                  if value and not value.startswith(("http://", "https://", "//", "#", "data:")):
+                      self.assets.append(value.split("?", 1)[0].split("#", 1)[0])
+
+          parser = AssetParser()
+          parser.feed(Path("main.html").read_text())
+
+          if not {"css.css", "js.js"}.issubset(parser.assets):
+              raise SystemExit("main.html must reference css.css and js.js")
+
+          missing = [asset for asset in parser.assets if not Path(asset).is_file()]
+          if missing:
+              raise SystemExit(f"Missing local page assets: {', '.join(missing)}")
+          PY
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: check
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    concurrency:
+      group: github-pages-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Prepare site
+        run: |
+          mkdir site
+          cp main.html site/index.html
+          cp css.css js.js site/
+
+      - name: Checkout GitHub Pages branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Publish site
+        run: |
+          cp -R site/. gh-pages/
+          git -C gh-pages config user.name "github-actions[bot]"
+          git -C gh-pages config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C gh-pages add index.html css.css js.js
+          if ! git -C gh-pages diff --cached --quiet; then
+            git -C gh-pages commit -m "Deploy site from ${GITHUB_SHA}"
+            git -C gh-pages push origin HEAD:gh-pages
+          fi

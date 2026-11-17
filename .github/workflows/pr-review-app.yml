@@ -1,0 +1,48 @@
+name: PR review app
+
+# Publishes a static preview under
+# https://tbell-dsit.github.io/temp-repo/pr-preview/pr-<N>/.
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pages: read
+  pull-requests: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout pull request
+        if: github.event.action != 'closed'
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Prepare site
+        if: github.event.action != 'closed'
+        run: |
+          mkdir site
+          cp main.html site/index.html
+          cp css.css js.js site/
+
+      - name: Deploy / remove preview
+        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9
+        with:
+          source-dir: ./site/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          pages-base-url: tbell-dsit.github.io/temp-repo
+          action: auto
+          wait-for-pages-deployment: true
