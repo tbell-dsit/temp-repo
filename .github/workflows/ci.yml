@@ -13,7 +13,7 @@ jobs:
   check:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Check JavaScript syntax
         run: node --check js.js
@@ -56,7 +56,7 @@ jobs:
       group: github-pages-deploy
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Prepare site
         run: |
@@ -65,7 +65,7 @@ jobs:
           cp css.css js.js site/
 
       - name: Checkout GitHub Pages branch
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: gh-pages
           path: gh-pages
