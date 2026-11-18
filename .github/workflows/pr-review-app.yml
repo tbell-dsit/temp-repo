@@ -1,9 +1,7 @@
 name: PR review app
 
-# Publishes a static preview of each pull request to
-# https://<owner>.github.io/<repo>/pr-preview/pr-<N>/ by committing the
-# Middleman build into a subdirectory of the existing gh-pages branch.
-# Cleanup happens automatically on pull_request `closed` events.
+# Publishes a static preview under
+# https://tbell-dsit.github.io/temp-repo/pr-preview/pr-<N>/.
 
 on:
   pull_request:
@@ -12,22 +10,9 @@ on:
       - reopened
       - synchronize
       - closed
-    paths:
-      - 'source/**'
-      - 'data/**'
-      - 'lib/**'
-      - 'helpers/**'
-      - '.github/workflows/**'
-      - 'config.rb'
-      - 'Gemfile'
-      - 'Gemfile.lock'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'Rakefile'
-      - 'README.md'
 
 concurrency:
-  group: pr-preview-${{ github.ref }}
+  group: pr-preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 permissions:
@@ -40,34 +25,22 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout pull request
+        if: github.event.action != 'closed'
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Set up Ruby
+      - name: Prepare site
         if: github.event.action != 'closed'
-        uses: ruby/setup-ruby@ca041f971d66735f3e5ff1e21cc13e2d51e7e535
-        with:
-          bundler-cache: true
-
-      - name: Set up Node
-        if: github.event.action != 'closed'
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '16'
-
-      - name: Install NPM dependencies
-        if: github.event.action != 'closed'
-        run: npm install
-
-      - name: Build site
-        if: github.event.action != 'closed'
-        run: bundle exec rake build
+        run: |
+          mkdir site
+          cp main.html site/index.html
+          cp css.css js.js site/
 
       - name: Deploy / remove preview
         uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9
         with:
-          source-dir: ./build/
+          source-dir: ./site/
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           pages-base-url: tbell-dsit.github.io/temp-repo
