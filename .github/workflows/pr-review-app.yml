@@ -37,7 +37,7 @@ jobs:
           cp css.css js.js site/
 
       - name: Deploy / remove preview
-        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9
+        uses: rossjrw/pr-preview-action@873417d2df72380da1f3978378fb58560bcde976
         with:
           source-dir: ./site/
           preview-branch: gh-pages
