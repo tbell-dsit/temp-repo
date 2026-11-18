@@ -29,3 +29,9 @@ b{
   color:white;
   background-color:black;
 }
+
+#target
+p{
+  color:red;
+  max-width:200px;
+}
